@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>TD Games</h1>
+    <button id="showButton">Get TRUTH Question</button>
+    <div id="output"></div>
+
+    <script>
+        // Function to handle button click
+        document.getElementById('showButton').addEventListener('click', function() {
+            const outputDiv = document.getElementById('output');
+            const returnValue = "returnmessage";
+            outputDiv.textContent = returnValue;
+        });
+    </script>
+</body>
+</html>
