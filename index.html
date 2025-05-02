@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TD Games</title>
+    <title>TD Games - Web</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,16 +19,39 @@
 </head>
 <body>
     <h1>TD Games</h1>
-    <button id="showButton">Get TRUTH Question</button>
+    <button id="fetchButton">TRUTH Question</button>
     <div id="output"></div>
 
     <script>
-        // Function to handle button click
-        document.getElementById('showButton').addEventListener('click', function() {
+        // Function to fetch and display API response
+        async function fetchApiResponse() {
             const outputDiv = document.getElementById('output');
-            const returnValue = "returnmessage";
-            outputDiv.textContent = returnValue;
-        });
+            try {
+                // Example API endpoint
+                const url = 'https://api.truthordarebot.xyz/api/truth';
+
+                // Fetch API response
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0'
+                    }
+                });
+
+                // Check if the response is OK
+                if (response.ok) {
+                    const data = await response.text();
+                    outputDiv.textContent = data; // Display the response in the output div
+                } else {
+                    outputDiv.textContent = `Error: ${response.status} - ${response.statusText}`;
+                }
+            } catch (error) {
+                outputDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Add event listener to button
+        document.getElementById('fetchButton').addEventListener('click', fetchApiResponse);
     </script>
 </body>
 </html>
